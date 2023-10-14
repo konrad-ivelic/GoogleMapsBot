@@ -52,22 +52,33 @@ with open(coordinates_file,"r") as file:
         #Close side bar tab
         side_bar = browser.find_element(By.XPATH,'//*[@id="QA0Szd"]/div/div/div[2]/button')
         side_bar.click()
-        time.sleep(2)
+        time.sleep(1)
 
         #Hover satelite view
-        #actions.move_to_element(satelite_view)
-        #actions.perform()
-        #time.sleep(5)
+        actions.move_to_element(satelite_view)
+        actions.perform()
+        time.sleep(2)
 
-        #more_button = browser.find_element(By.XPATH,'/div/div/ul/li[5]/button')
-        #more_button.click()
-        #time.sleep(2)
+        #Click more button to get more options
+        more_button = browser.find_element(By.XPATH,'//*[@id="layer-switcher-quick"]/div/div/div/ul/li[5]/button')
+        more_button.click()
+        time.sleep(1)
+
+        #Click checkbox to erase tags from the map
+        tag_checkbox = browser.find_element(By.XPATH,'//*[@id="layer-switcher"]/div/div/div/div[4]/ul/li[2]/button')
+        tag_checkbox.click()
+        time.sleep(1)
+
+        #Close the hovered window
+        close_button = browser.find_element(By.XPATH,'//*[@id="layer-switcher"]/div/div/div/div[1]/header/button')
+        close_button.click()
+        time.sleep(1)
 
         #Center the image by dragging the map
         maps = browser.find_element(By.XPATH,'//*[@id="scene"]/div[3]')
         #For some reason the first move_by_offset is not done, but if it is not written none of it works
         #TODO: Erase first move_by_offset without breaking the code
-        actions.click_and_hold(maps).move_by_offset(150, 100).pause(2).move_by_offset(-250, 0).release()
+        actions.click_and_hold(maps).move_by_offset(150, 100).pause(1).move_by_offset(-250, 0).release()
         actions.perform()
 
         #Take and save screenshot
@@ -76,7 +87,7 @@ with open(coordinates_file,"r") as file:
 
         #Open side bar again to do a new search
         side_bar.click()
-        time.sleep(2)
+        time.sleep(1)
 
         #Clear text box and add 1 to the counter
         search_bar.clear()
