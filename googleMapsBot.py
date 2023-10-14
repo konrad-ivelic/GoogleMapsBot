@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
-from PIL import Image
 import time
 import sys
 
@@ -62,17 +61,17 @@ with open(coordinates_file,"r") as file:
         #Click more button to get more options
         more_button = browser.find_element(By.XPATH,'//*[@id="layer-switcher-quick"]/div/div/div/ul/li[5]/button')
         more_button.click()
-        time.sleep(1)
+        time.sleep(2)
 
         #Click checkbox to erase tags from the map
         tag_checkbox = browser.find_element(By.XPATH,'//*[@id="layer-switcher"]/div/div/div/div[4]/ul/li[2]/button')
         tag_checkbox.click()
-        time.sleep(1)
+        time.sleep(2)
 
         #Close the hovered window
         close_button = browser.find_element(By.XPATH,'//*[@id="layer-switcher"]/div/div/div/div[1]/header/button')
         close_button.click()
-        time.sleep(1)
+        time.sleep(2)
 
         #Center the image by dragging the map
         maps = browser.find_element(By.XPATH,'//*[@id="scene"]/div[3]')
